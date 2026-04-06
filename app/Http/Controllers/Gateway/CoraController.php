@@ -124,7 +124,7 @@ class CoraController extends Controller {
                 ],
             ];
 
-            $response = $client->post(env('API_BANK_URL') . 'v2/endpoints/', $options);
+            $response = $client->post(env('API_BANK_URL') . 'endpoints/', $options);
             dd($data = json_decode($response->getBody()->getContents(), true));
 
         } catch (RequestException $e) {
