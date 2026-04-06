@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('payment_status', ['pending', 'paid', 'canceled'])->default('pending');
             $table->string('payment_url')->nullable();
             $table->string('payment_token')->nullable();
