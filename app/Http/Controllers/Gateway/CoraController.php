@@ -129,13 +129,7 @@ class CoraController extends Controller {
 
         } catch (RequestException $e) {
             if ($e->hasResponse()) {
-                $responseBody = json_decode($e->getResponse()->getBody()->getContents(), true);
-
-                return [
-                    'status'  => 'error',
-                    'message' => $responseBody['errors'][0]['description']
-                                ?? 'Erro na geração da cobrança.'
-                ];
+                return $responseBody = json_decode($e->getResponse()->getBody()->getContents(), true);
             }
 
             return [
