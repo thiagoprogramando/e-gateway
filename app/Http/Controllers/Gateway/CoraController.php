@@ -100,7 +100,7 @@ class CoraController extends Controller {
         }
     }
 
-    public function storeWebhook () {
+    public function getWebhook () {
         $token = app(CoraAuthService::class)->getToken();
         try {
             $client = new Client([

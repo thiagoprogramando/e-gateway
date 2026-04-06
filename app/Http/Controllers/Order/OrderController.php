@@ -23,6 +23,17 @@ class OrderController extends Controller {
 
         return "Acesso negado!";
     }
+
+    public function getWebhook () {
+
+        if (env('APP_ENV') == 'local') {
+
+            $coraController = new CoraController();
+            return $coraController->getWebhook();
+        }
+
+        return "Acesso negado!";
+    }
     
     public function store (Request $request) {
 
