@@ -122,12 +122,12 @@
                                                                             <small class="text-muted">R$ 80,00</small>
                                                                         </span>
                                                                         <span class="custom-option-body">
-                                                                            <small>Você pagará R$ 80/mês até concluir o curso!</small>
+                                                                            <small>Você pagará apenas R$ 80/mês até concluir o curso!</small>
                                                                         </span>
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md">
+                                                            {{-- <div class="col-md">
                                                                 <div class="form-check custom-option custom-option-basic">
                                                                     <label class="form-check-label custom-option-content" for="packageTwo">
                                                                         <input name="package" class="form-check-input" type="radio" value="480" id="packageTwo">
@@ -140,7 +140,7 @@
                                                                         </span>
                                                                     </label>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
