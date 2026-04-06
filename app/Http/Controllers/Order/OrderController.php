@@ -12,6 +12,17 @@ use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class OrderController extends Controller {
+
+    public function getToken () {
+
+        if (env('APP_ENV') == 'local') {
+
+            $coraController = new CoraController();
+            return $coraController->getToken();
+        }
+
+        return "Acesso negado!";
+    }
     
     public function store (Request $request) {
 
