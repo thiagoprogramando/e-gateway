@@ -116,13 +116,13 @@
                                                             <div class="col-md mb-md-0 mb-5">
                                                                 <div class="form-check custom-option custom-option-basic checked">
                                                                     <label class="form-check-label custom-option-content" for="packageOne">
-                                                                        <input name="package" class="form-check-input" type="radio" value="80" id="packageOne" checked>
+                                                                        <input name="package" class="form-check-input" type="radio" value="25" id="packageOne" checked>
                                                                         <span class="custom-option-header">
-                                                                            <span class="h6 mb-0">Mensalidade</span>
-                                                                            <small class="text-muted">R$ 80,00</small>
+                                                                            <span class="h6 mb-0">Matrícula</span>
+                                                                            <small class="text-muted">R$ 25,00</small>
                                                                         </span>
                                                                         <span class="custom-option-body">
-                                                                            <small>Você pagará apenas R$ 80/mês até concluir o curso!</small>
+                                                                            <small>Aproveite essa promoção!</small>
                                                                         </span>
                                                                     </label>
                                                                 </div>
