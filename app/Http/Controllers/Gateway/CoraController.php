@@ -100,6 +100,58 @@ class CoraController extends Controller {
         }
     }
 
+    public function storeWebhook () {
+        $token = app(CoraAuthService::class)->getToken();
+        try {
+            $client = new Client([
+                'cert'    => config('services.cora.certificate'),
+                'ssl_key' => config('services.cora.key'),
+                'verify'  => false,
+            ]);
+
+            $options = [
+                'headers' => [
+                    'Content-Type'     => 'application/json',
+                    'Accept'           => 'application/json',
+                    'Authorization'    => "Bearer {$token}",
+                    'Idempotency-Key'  => Str::uuid()->toString(),
+                    'User-Agent'       => env('APP_NAME'),
+                ],
+                'json' => [
+                    'url'       => env('APP_URL').'api/webhook-cora',
+                    'resource'  => 'invoice',
+                    'trigger'   => '*'
+                ],
+            ];
+
+            $response = $client->post(env('API_BANK_URL') . 'v2/invoices/', $options);
+            return $data = json_decode($response->getBody()->getContents(), true);
+
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                $responseBody = json_decode($e->getResponse()->getBody()->getContents(), true);
+
+                return [
+                    'status'  => 'error',
+                    'message' => $responseBody['errors'][0]['description']
+                                ?? 'Erro na geração da cobrança.'
+                ];
+            }
+
+            return [
+                'status'  => 'error',
+                'message' => 'Falha na comunicação com a API Cora.'
+            ];
+
+        } catch (\Exception $e) {
+
+            return [
+                'status'  => 'error',
+                'message' => $e->getMessage()
+            ];
+        }
+    }
+
     public function webhook(Request $request) {
 
         $headers = $request->headers->all();
